@@ -10,8 +10,14 @@ npx wrangler login
 npx wrangler deploy
 ```
 
-Wrangler creates `ams_cloud_panel` (D1) and the KV namespace on the first deploy
-and reuses them later. Open `https://ams-cloud-panel.<subdomain>.workers.dev/_panel`
+Wrangler can provision missing resources on the first deploy. If a namespace
+with the configured title already exists (for example, after a partially
+completed first deploy or when deploying through Workers Builds), Wrangler may
+not be able to adopt it automatically. In that case, bind the existing
+resources explicitly: run `npx wrangler kv namespace list` and
+`npx wrangler d1 list`, then set the KV namespace `id` and D1 `database_id` in
+`wrangler.toml` for the matching resources. Do not create another namespace
+with the same title. Open `https://hosting-panel-cms.<subdomain>.workers.dev/_panel`
 and complete the installer.
 
 Before you deploy, decide whether to lock the installer:

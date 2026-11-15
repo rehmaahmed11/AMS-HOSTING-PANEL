@@ -61,9 +61,12 @@ npx wrangler secret put PANEL_SETUP_TOKEN   # optional, strongly recommended
 npx wrangler deploy
 ```
 
-`wrangler deploy` creates the D1 database and KV namespace on the first run and
-reuses them afterwards — there are no IDs to paste and nothing to pay for. Open
-`https://<your-worker>.workers.dev/_panel` and complete the installer.
+Wrangler may create the D1 database and KV namespace on the first run. If a
+resource already exists but Wrangler tries to provision it again, use
+`npx wrangler kv namespace list` and `npx wrangler d1 list` to find its ID,
+then set `id` (KV) and `database_id` (D1) in `wrangler.toml` to bind the
+existing resources. Open `https://<your-worker>.workers.dev/_panel` and
+complete the installer.
 
 Tested bundle: **254 KiB uploaded, 64 KiB gzipped** — well inside the free
 Worker size limit.

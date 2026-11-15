@@ -1,4 +1,4 @@
-name = "ams-cloud-panel"
+name = "hosting-panel-cms"
 main = "src/index.ts"
 compatibility_date = "2025-01-01"
 
